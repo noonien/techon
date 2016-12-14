@@ -1,0 +1,25 @@
+(iterative version of Fibonacci)
+variable a
+variable b
+variable tmp
+variable i
+: fib (n --- n) dup 2 >=
+if
+  0 a !
+  1 b !
+
+  dup i !
+  while
+	a @ tmp ! (tmp = a)
+	b @ a ! (a = b)
+
+	tmp @ a @ + b ! (b = tmp + 2)
+	i @ 1 - i ! (i = i + 1)
+
+	tmp @ (push tmp)
+
+	i @
+  repeat
+  a @
+then ;
+9 fib
